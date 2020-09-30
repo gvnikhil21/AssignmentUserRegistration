@@ -17,14 +17,30 @@ public class UserRegistration {
 		System.out.println("Enter First Name: ");
 		String firstName = sc.nextLine();
 		userReg.validateFirstName(firstName);
+
+		// validating last name
+		System.out.println("Enter First Name: ");
+		String LastName = sc.nextLine();
+		userReg.validateLastName(LastName);
 	}
 
 	public void validateFirstName(String firstName) {
 		String patternFirstName = "[A-Z][a-zA-z]{2,}";
-		String message = "Invalid first name! First letter should be capital and first name should have atleast three letters!";
+		String message = "Invalid first name! First name should have atleast three letters and first letter should be capital!";
 		try {
 			validate(firstName, patternFirstName, message);
-			System.out.println("Valid first name!");
+			System.out.println("Valid first name!\n");
+		} catch (ValidationException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void validateLastName(String LastName) {
+		String patternLastName = "[A-Z][a-zA-z]{2,}";
+		String message = "Invalid last name! Last name should have atleast three letters and first letter should be capital!";
+		try {
+			validate(LastName, patternLastName, message);
+			System.out.println("Valid last name!");
 		} catch (ValidationException e) {
 			e.printStackTrace();
 		}
