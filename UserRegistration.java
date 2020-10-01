@@ -38,6 +38,7 @@ public class UserRegistration {
 		 * minimum 8 characters 
 		 * minimum 1 upperCase letter 
 		 * minimum 1 numeric digit
+		 * exactly one special character
 		 */
 		System.out.println("Enter Password: ");
 		String password = sc.nextLine();
@@ -89,8 +90,8 @@ public class UserRegistration {
 	}
 
 	private void validatePassword(String password) {
-		String patternPassword = "(?=.*[0-9])(?=.*[A-Z])[\\S]{8,}";
-		String message = "Invalid password! Must contain atleast 8 characters(no whitespaces allowed),one upperCase,one numericDigit";
+		String patternPassword = "(?!(?=\\w*[^\\w\\s]{2,}))(?=.*[0-9])(?=.*[A-Z])[\\S]{8,}";
+		String message = "Invalid password! Must contain atleast 8 characters(no whitespaces allowed),one upperCase,one numericDigit,only one special character";
 		try {
 			validate(password, patternPassword, message);
 			System.out.println("Valid password!");
