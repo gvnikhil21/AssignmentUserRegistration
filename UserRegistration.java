@@ -22,6 +22,11 @@ public class UserRegistration {
 		System.out.println("Enter First Name: ");
 		String LastName = sc.nextLine();
 		userReg.validateLastName(LastName);
+
+		// validating email
+		System.out.println("Enter Email: ");
+		String email = sc.nextLine();
+		userReg.validateEmail(email);
 	}
 
 	public void validateFirstName(String firstName) {
@@ -40,7 +45,18 @@ public class UserRegistration {
 		String message = "Invalid last name! Last name should have atleast three letters and first letter should be capital!";
 		try {
 			validate(LastName, patternLastName, message);
-			System.out.println("Valid last name!");
+			System.out.println("Valid last name!\n");
+		} catch (ValidationException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void validateEmail(String email) {
+		String patternEmail = "[\\w\\d+-_]+(?:\\.[\\w\\d+-_]+)*@(?:[\\w\\d]+\\.)+[\\w]{2,}";
+		String message = "Invalid email!";
+		try {
+			validate(email, patternEmail, message);
+			System.out.println("Valid email!\n");
 		} catch (ValidationException e) {
 			e.printStackTrace();
 		}
