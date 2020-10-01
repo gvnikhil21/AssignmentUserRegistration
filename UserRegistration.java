@@ -43,6 +43,31 @@ public class UserRegistration {
 		System.out.println("Enter Password: ");
 		String password = sc.nextLine();
 		userReg.validatePassword(password);
+		
+		//testing provided email samples
+		ArrayList<String>emailList=new ArrayList<String>();
+		//valid emails
+		emailList.add("abc@yahoo.com");
+		emailList.add("abc-100@yahoo.com");
+		emailList.add("abc.100@yahoo.com");
+		emailList.add("abc111@yahoo.com");
+		emailList.add("abc-100@yahoo.abc.com");
+		emailList.add("abc.100@yahoo.com.au");
+		emailList.add("abc@1.com");
+		emailList.add("abc+100@yahoo.com");
+		
+		//invalid emails
+		emailList.add("abc");
+		emailList.add("abc@.com.my");
+		emailList.add("abc123@yahoo.a");
+		emailList.add("abc123@.com");
+		emailList.add("abc123@.com.com");
+		emailList.add("abc()*@yahoo.com");
+		emailList.add("abc..2002@yahoo.com");
+		emailList.add("abc@yahoo.com.c1");
+		for(String str:emailList) {
+			userReg.validateEmail(str);
+		}
 	}
 
 	public void validateFirstName(String firstName) {
@@ -68,7 +93,7 @@ public class UserRegistration {
 	}
 
 	public void validateEmail(String email) {
-		String patternEmail = "[\\w\\d+-_]+(?:\\.[\\w\\d+-_]+)*@(?:[\\w\\d]+\\.)+[\\w]{2,}";
+		String patternEmail = "[\\w+_-]+(?:\\.[\\w+_-]+)*@(?:[\\w]+\\.)+[a-zA-Z]{2,}";
 		String message = "Invalid email!";
 		try {
 			validate(email, patternEmail, message);
