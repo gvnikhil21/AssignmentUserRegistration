@@ -68,7 +68,7 @@ public class UserRegistration {
 	}
 
 	public void validateEmail(String email) {
-		String patternEmail = "[\\w\\d+-_]+(?:\\.[\\w\\d+-_]+)*@(?:[\\w\\d]+\\.)+[\\w]{2,}";
+		String patternEmail = "[\\w+_-]+(?:\\.[\\w+_-]+)*@(?:[\\w]+\\.)+[a-zA-Z]{2,}";
 		String message = "Invalid email!";
 		try {
 			validate(email, patternEmail, message);
@@ -90,8 +90,8 @@ public class UserRegistration {
 	}
 
 	private void validatePassword(String password) {
-		String patternPassword = "(?!(?=\\w*[^\\w\\s]{2,}))(?=.*[0-9])(?=.*[A-Z])[\\S]{8,}";
-		String message = "Invalid password! Must contain atleast 8 characters(no whitespaces allowed),one upperCase,one numericDigit,only one special character";
+		String patternPassword = "(?=.*[0-9])(?=.*[A-Z])[\\w\\s]*[^\\w\\s][\\w\\s]*{8,}";
+		String message = "Invalid password! Must contain atleast 8 characters(no whitespaces allowed),one upperCase,one numericDigit,only one special character(excluding underscore)";
 		try {
 			validate(password, patternPassword, message);
 			System.out.println("Valid password!");
