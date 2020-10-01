@@ -32,6 +32,13 @@ public class UserRegistration {
 		System.out.println("Enter Phone Number: ");
 		String phoneNo = sc.nextLine();
 		userReg.validatePhoneNumber(phoneNo);
+
+		/*
+		 * validating password minimum 8 characters
+		 */
+		System.out.println("Enter Password: ");
+		String password = sc.nextLine();
+		userReg.validatePassword(password);
 	}
 
 	public void validateFirstName(String firstName) {
@@ -73,6 +80,17 @@ public class UserRegistration {
 		try {
 			validate(phoneNo, patternPhoneNo, message);
 			System.out.println("Valid phone number!\n");
+		} catch (ValidationException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void validatePassword(String password) {
+		String patternPassword = "[^\\s]+{8,}";
+		String message = "Invalid password! Must contain atleast 8 characters(no whitespaces allowed)";
+		try {
+			validate(password, patternPassword, message);
+			System.out.println("Valid password!");
 		} catch (ValidationException e) {
 			e.printStackTrace();
 		}
