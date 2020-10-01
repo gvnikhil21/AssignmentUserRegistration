@@ -27,6 +27,11 @@ public class UserRegistration {
 		System.out.println("Enter Email: ");
 		String email = sc.nextLine();
 		userReg.validateEmail(email);
+
+		// validating phone number
+		System.out.println("Enter Phone Number: ");
+		String phoneNo = sc.nextLine();
+		userReg.validatePhoneNumber(phoneNo);
 	}
 
 	public void validateFirstName(String firstName) {
@@ -57,6 +62,17 @@ public class UserRegistration {
 		try {
 			validate(email, patternEmail, message);
 			System.out.println("Valid email!\n");
+		} catch (ValidationException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void validatePhoneNumber(String phoneNo) {
+		String patternPhoneNo = "[0-9]{2}[\\s][0-9]{10}";
+		String message = "Invalid phone number! Must contain country code followed by space and 10 digit number";
+		try {
+			validate(phoneNo, patternPhoneNo, message);
+			System.out.println("Valid phone number!\n");
 		} catch (ValidationException e) {
 			e.printStackTrace();
 		}
