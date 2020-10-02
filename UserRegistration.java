@@ -1,11 +1,10 @@
 package com.bridgelabs.userregistration;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class UserRegistration {
+public class UserRegistration { 
 	private static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
@@ -35,40 +34,15 @@ public class UserRegistration {
 		userReg.validatePhoneNumber(phoneNo);
 
 		/*
-		 * validating password
-		 * minimum 8 characters
-		 * minimum 1 upperCase letter
-		 * minimum 1 numeric digit 
+		 * validating password 
+		 * minimum 8 characters 
+		 * minimum 1 upperCase letter 
+		 * minimum 1 numeric digit
 		 * exactly one special character
 		 */
 		System.out.println("Enter Password: ");
 		String password = sc.nextLine();
 		userReg.validatePassword(password);
-
-		// testing provided email samples
-		ArrayList<String> emailList = new ArrayList<String>();
-		// valid emails
-		emailList.add("abc@yahoo.com");
-		emailList.add("abc-100@yahoo.com");
-		emailList.add("abc.100@yahoo.com");
-		emailList.add("abc111@yahoo.com");
-		emailList.add("abc-100@yahoo.abc.com");
-		emailList.add("abc.100@yahoo.com.au");
-		emailList.add("abc@1.com");
-		emailList.add("abc+100@yahoo.com");
-
-		// invalid emails
-		emailList.add("abc");
-		emailList.add("abc@.com.my");
-		emailList.add("abc123@yahoo.a");
-		emailList.add("abc123@.com");
-		emailList.add("abc123@.com.com");
-		emailList.add("abc()*@yahoo.com");
-		emailList.add("abc..2002@yahoo.com");
-		emailList.add("abc@yahoo.com.c1");
-		for (String str : emailList) {
-			userReg.validateEmail(str);
-		}
 	}
 
 	public boolean validateFirstName(String firstName) {
@@ -128,7 +102,7 @@ public class UserRegistration {
 		String message = "Invalid password! Must contain atleast 8 characters(no whitespaces allowed),one upperCase,one numericDigit,only one special character(excluding underscore)";
 		try {
 			validate(password, patternPassword, message);
-			System.out.println("Valid password!\n");
+			System.out.println("Valid password!");
 			return true;
 		} catch (ValidationException e) {
 			System.out.println(e.getMessage());
