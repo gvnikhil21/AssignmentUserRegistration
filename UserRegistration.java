@@ -109,7 +109,8 @@ public class UserRegistration {
 			return false;
 		}
 	}
-
+	
+	// common validation method 
 	public static void validate(String text, String pattern, String message) throws ValidationException {
 		Pattern patternObj = Pattern.compile(pattern);
 		Matcher matcherObj = patternObj.matcher(text);
