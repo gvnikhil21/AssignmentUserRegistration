@@ -72,7 +72,7 @@ public class UserRegistration {
 	}
 
 	public boolean validateEmail(String email) {
-		String patternEmail = "[\\w+_-]+(?:\\.[\\w+_-]+)*@(?:[\\w]+\\.)+[a-zA-Z]{2,}";
+		String patternEmail = "[\\w+_-]+(?:\\.[\\w+_-]+)*@(?:[\\w]+\\.){1,2}[a-zA-Z]{2,}";
 		String message = "Invalid email!";
 		try {
 			validate(email, patternEmail, message);
