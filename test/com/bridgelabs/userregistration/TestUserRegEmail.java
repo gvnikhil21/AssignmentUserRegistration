@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -16,20 +15,14 @@ import com.bridgelabs.userregistration.UserRegistration;
 public class TestUserRegEmail {
 	private String email;
 	private boolean result;
-	private static UserRegistration userReg;
 
 	public TestUserRegEmail(String email, boolean result) {
 		this.email = email;
 		this.result = result;
 	}
 
-	@BeforeClass
-	public static void initialize() {
-		userReg = new UserRegistration();
-	}
-
 	@Parameterized.Parameters
-	public static Collection input() {
+	public static Collection<Object[]> input() {
 		return Arrays.asList(new Object[][] {
 				// valid email return true
 				{ "abc@yahoo.com", true }, { "abc-100@yahoo.com", true }, { "abc.100@yahoo.com", true },
@@ -44,6 +37,6 @@ public class TestUserRegEmail {
 
 	@Test
 	public void testValidateEmail() {
-		assertEquals(result, userReg.validateEmail(email));
+		assertEquals(result, UserRegistration.validateEmail(email));
 	}
 }
